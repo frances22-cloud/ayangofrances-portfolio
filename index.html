@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Ayango Frances | Software Developer</title>
+  <meta name="description"
+    content="Ayango Frances — Software Developer building practical software for African businesses. Portfolio, services, and technical skills.">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Ayango Frances — Software Developer">
+  <meta property="og:description"
+    content="Building practical software for businesses. Portfolio, services, and technical skills.">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Ayango Frances — Software Developer">
+  <meta name="twitter:description"
+    content="Building practical software for businesses. Portfolio, services, and technical skills.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      box-sizing: border-box;
+      padding-top: env(safe-area-inset-top, 0px);
+      padding-bottom: env(safe-area-inset-bottom, 0px);
+      color-scheme: dark;
+      --paper: #101216;
+      --panel: #191D23;
+      --ink: #F1F3F5;
+      --ink-soft: #A6AFBA;
+      --line: #2B3038;
+      --blue: #84A2FF;
+      --amber: #E2AD67;
+    }
+
+    html {
+      scroll-padding-top: env(safe-area-inset-top, 0px);
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root:not([data-theme="light"]) {
+        --paper: #101216;
+        --panel: #191D23;
+        --ink: #F1F3F5;
+        --ink-soft: #A6AFBA;
+        --line: #2B3038;
+        --blue: #84A2FF;
+        --amber: #E2AD67;
+      }
+    }
+
+    :root[data-theme="dark"] {
+      --paper: #101216;
+      --panel: #191D23;
+      --ink: #F1F3F5;
+      --ink-soft: #A6AFBA;
+      --line: #2B3038;
+      --blue: #84A2FF;
+      --amber: #E2AD67;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--paper);
+      color: var(--ink);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .wrap {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 26px;
+    }
+
+    h1,
+    h2,
+    h3 {
+      font-family: 'Sora', sans-serif;
+      font-weight: 600;
+      margin: 0;
+    }
+
+    .mono {
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    header {
+      position: sticky;
+      top: env(safe-area-inset-top, 0px);
+      background: color-mix(in srgb, var(--paper) 86%, transparent);
+      backdrop-filter: blur(6px);
+      border-bottom: 1px solid var(--line);
+      z-index: 10;
+    }
+
+    .header-inner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+
+    .brand {
+      font-family: 'Sora', sans-serif;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    nav a {
+      color: var(--ink-soft);
+      text-decoration: none;
+      font-size: .9rem;
+      margin-left: 20px;
+    }
+
+    nav a:hover {
+      color: var(--ink);
+    }
+
+    .hero {
+      padding: 76px 0 50px;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: .5;
+      background-image: linear-gradient(var(--line) 1px, transparent 1px),
+        linear-gradient(90deg, var(--line) 1px, transparent 1px);
+      background-size: 42px 42px;
+      mask-image: linear-gradient(90deg, transparent 0%, black 18%, black 68%, transparent 100%);
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      top: 20%;
+      right: 7%;
+      width: 230px;
+      height: 230px;
+      border: 1px solid color-mix(in srgb, var(--blue) 35%, transparent);
+      border-radius: 50%;
+      transform: rotate(-18deg) scale(.9);
+      animation: hero-ring 12s ease-in-out infinite;
+    }
+
+    .hero-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 36px;
+    }
+
+    .hero-text {
+      flex: 1;
+      min-width: 0;
+    }
+
+    .hero-photo {
+      flex-shrink: 0;
+      width: 200px;
+      height: 200px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      position: relative;
+      animation: hero-photo-in 900ms cubic-bezier(.2, .8, .2, 1) both, hero-float 7s ease-in-out 1s infinite;
+    }
+
+    .hero-photo::after {
+      content: '';
+      position: absolute;
+      inset: 8px;
+      border: 1px solid color-mix(in srgb, var(--amber) 60%, transparent);
+      border-radius: 50%;
+      pointer-events: none;
+      transform: rotate(20deg);
+    }
+
+    .hero-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero .eyebrow {
+      color: var(--blue);
+      font-size: .92rem;
+      margin: 0 0 14px;
+      animation: hero-item-in 700ms ease-out 80ms both;
+    }
+
+    .hero h1 {
+      font-size: clamp(2rem, 5vw, 3.1rem);
+      line-height: 1.14;
+      max-width: 16ch;
+      animation: hero-item-in 700ms ease-out 160ms both;
+    }
+
+    .hero .lede {
+      margin-top: 20px;
+      max-width: 56ch;
+      color: var(--ink-soft);
+      font-size: 1.06rem;
+      line-height: 1.62;
+      animation: hero-item-in 700ms ease-out 240ms both;
+    }
+
+    .stack-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 28px;
+      animation: hero-item-in 700ms ease-out 320ms both;
+    }
+
+    .stack-row span {
+      font-size: .8rem;
+      padding: 5px 10px;
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      color: var(--ink-soft);
+      transition: border-color 180ms ease, color 180ms ease, transform 180ms ease;
+    }
+
+    .stack-row span:hover {
+      border-color: var(--blue);
+      color: var(--blue);
+      transform: translateY(-2px);
+    }
+
+    @keyframes hero-item-in {
+      from {
+        opacity: 0;
+        transform: translateY(18px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes hero-photo-in {
+      from {
+        opacity: 0;
+        transform: scale(.82) rotate(8deg);
+      }
+
+      to {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+      }
+    }
+
+    @keyframes hero-float {
+
+      0%,
+      100% {
+        transform: translateY(0);
+      }
+
+      50% {
+        transform: translateY(-8px);
+      }
+    }
+
+    @keyframes hero-ring {
+
+      0%,
+      100% {
+        transform: rotate(-18deg) scale(.9);
+        opacity: .35;
+      }
+
+      50% {
+        transform: rotate(18deg) scale(1.04);
+        opacity: .75;
+      }
+    }
+
+    section {
+      padding: 54px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    section:last-of-type {
+      border-bottom: none;
+    }
+
+    .section-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 32px;
+    }
+
+    .section-head h2 {
+      font-size: 1.4rem;
+    }
+
+    .section-head .count {
+      color: var(--ink-soft);
+      font-size: .84rem;
+    }
+
+    /* case studies */
+    .case {
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 28px;
+      padding: 30px 0;
+      border-top: 1px solid var(--line);
+    }
+
+    .case:first-child {
+      border-top: none;
+    }
+
+    .case h3 {
+      font-size: 1.2rem;
+      margin-bottom: 6px;
+    }
+
+    .case .ctx {
+      color: var(--ink-soft);
+      font-size: .95rem;
+      line-height: 1.6;
+      margin: 0 0 12px;
+      max-width: 54ch;
+    }
+
+    .case .did {
+      font-size: .92rem;
+      color: var(--ink);
+      margin: 0 0 12px;
+    }
+
+    .case .did b {
+      color: var(--ink-soft);
+      font-weight: 500;
+    }
+
+    .case blockquote {
+      margin: 0 0 12px;
+      font-size: .92rem;
+      font-style: italic;
+      color: var(--ink-soft);
+      border-left: 2px solid var(--amber);
+      padding-left: 12px;
+    }
+
+    .case .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .case .tags span {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .72rem;
+      color: var(--blue);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: 3px 8px;
+    }
+
+    .stat-box {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 18px;
+      align-self: start;
+    }
+
+    .stat-box .k {
+      font-size: .72rem;
+      color: var(--ink-soft);
+      margin-bottom: 6px;
+    }
+
+    .stat-box .v {
+      font-size: 1.02rem;
+      line-height: 1.4;
+    }
+
+    /* services */
+    .services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .svc {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 22px;
+      position: relative;
+    }
+
+    .svc.flagship {
+      border-color: var(--blue);
+    }
+
+    .svc .badge {
+      position: absolute;
+      top: -11px;
+      left: 18px;
+      background: var(--blue);
+      color: #fff;
+      font-size: .68rem;
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-family: 'IBM Plex Mono', monospace;
+    }
+
+    .svc .tag {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .74rem;
+      color: var(--amber);
+      margin-bottom: 8px;
+      display: block;
+    }
+
+    .svc h3 {
+      font-size: 1.05rem;
+      margin-bottom: 8px;
+    }
+
+    .svc p {
+      color: var(--ink-soft);
+      font-size: .9rem;
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* about */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 44px;
+    }
+
+    .about-grid p {
+      color: var(--ink-soft);
+      line-height: 1.7;
+    }
+
+    .fact {
+      margin-bottom: 16px;
+    }
+
+    .fact .k {
+      font-size: .76rem;
+      color: var(--ink-soft);
+      margin-bottom: 3px;
+    }
+
+    .fact .v {
+      font-size: .96rem;
+    }
+
+    .resume-box {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      padding: 24px 26px;
+      flex-wrap: wrap;
+    }
+
+    .resume-box p {
+      margin: 0;
+      color: var(--ink-soft);
+      font-size: .94rem;
+      max-width: 44ch;
+    }
+
+    .cv-btn {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .85rem;
+      color: var(--blue);
+      background: transparent;
+      border: 1px solid var(--blue);
+      border-radius: 5px;
+      padding: 10px 18px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .cv-btn:hover {
+      background: var(--blue);
+      color: #fff;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .skill-group {
+      border-top: 2px solid var(--blue);
+      padding-top: 16px;
+    }
+
+    .skill-group:nth-child(2) {
+      border-top-color: var(--amber);
+    }
+
+    .skill-group:nth-child(3) {
+      border-top-color: var(--ink-soft);
+    }
+
+    .skill-group h3 {
+      font-size: 1.05rem;
+      margin-bottom: 16px;
+    }
+
+    .skill-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+
+    .skill-list li {
+      background: var(--panel);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      color: var(--ink-soft);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: .78rem;
+      padding: 7px 10px;
+    }
+
+    footer.contact {
+      padding: 58px 0 68px;
+    }
+
+    footer.contact h2 {
+      font-size: 1.8rem;
+      max-width: 16ch;
+      margin-bottom: 18px;
+    }
+
+    .contact-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px 26px;
+      margin-top: 24px;
+    }
+
+    .contact-links a {
+      color: var(--ink);
+      text-decoration: none;
+      font-size: .96rem;
+      border-bottom: 1px solid var(--amber);
+      padding-bottom: 2px;
+    }
+
+    .fineprint {
+      margin-top: 46px;
+      color: var(--ink-soft);
+      font-size: .76rem;
+    }
+
+    @media (max-width:680px) {
+
+      .about-grid,
+      .services,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .case {
+        grid-template-columns: 1fr;
+      }
+
+      nav a {
+        margin-left: 12px;
+        font-size: .82rem;
+      }
+
+      .hero-grid {
+        flex-direction: column-reverse;
+        align-items: flex-start;
+      }
+
+      .hero-photo {
+        width: 140px;
+        height: 140px;
+      }
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 2px solid var(--blue);
+      outline-offset: 2px;
+    }
+
+    @media (prefers-reduced-motion:reduce) {
+      * {
+        scroll-behavior: auto !important;
+      }
+
+      .hero::after,
+      .hero-photo,
+      .hero .eyebrow,
+      .hero h1,
+      .hero .lede,
+      .stack-row {
+        animation: none;
+      }
+
+      .hero .eyebrow,
+      .hero h1,
+      .hero .lede,
+      .stack-row {
+        opacity: 1;
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="wrap header-inner">
+      <div class="brand">Ayango Frances</div>
+      <nav>
+        <a href="#work">Work</a>
+        <a href="#services">Services</a>
+        <a href="#skills">Skills</a>
+        <a href="#resume">Resume</a>
+        <a href="#about">About</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero wrap" style="border-top:none;">
+    <div class="hero-grid">
+      <div class="hero-text">
+        <p class="eyebrow mono">Software Developer</p>
+        <h1>Building Practical Software for Businesses.</h1>
+        <p class="lede">I build practical software solutions using modern web technologies, while continuously growing
+          my skills in software engineering and AI.</p>
+        <div class="stack-row mono">
+          <span>PHP /
+            Laravel</span><span>React</span><span>Python</span><span>MySQL</span><span>Git</span><span>Linux</span>
+        </div>
+      </div>
+      <div class="hero-photo"><img src="photo.jpg" alt="Ayango Frances"></div>
+    </div>
+  </section>
+
+  <section id="work" class="wrap">
+    <div class="section-head">
+      <h2>Projects</h2><span class="count mono">3 projects</span>
+    </div>
+
+    <div class="case">
+      <div>
+        <h3>School Management System</h3>
+        <p class="ctx">A modular school-management system for nursery, primary, secondary, vocational, and combined
+          institutions, spanning admissions, academics, fees, library, hostel, transport, clinic, and more with three
+          client surfaces sharing one backend.</p>
+        <p class="did"><b>What I did:</b> Developed the backend API.</p>
+        <blockquote>"One connected system for every part of a school's daily operation."</blockquote>
+        <div class="tags"><span>Laravel</span><span>REST API</span><span>Education</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="k mono">Headline stat</div>
+        <div class="v">3 client surfaces sharing one backend</div>
+      </div>
+    </div>
+
+    <div class="case">
+      <div>
+        <h3>Pharmacy Management System</h3>
+        <p class="ctx">A Laravel-based pharmacy management system designed to streamline inventory, stock management,
+          sales, expenses, reporting, and point-of-sale operations.</p>
+        <p class="did"><b>What I did:</b> Designed and developed the web application, implementing inventory, stock,
+          sales, expenses, reporting, and POS functionality.</p>
+        <blockquote>"Simple technology can make everyday business operations more efficient."</blockquote>
+        <div class="tags"><span>Laravel</span><span>FilamentPHP</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="k mono">Headline stat</div>
+        <div class="v">Inventory, POS, sales, expenses, and reporting in one system</div>
+      </div>
+    </div>
+
+
+    <div class="case">
+      <div>
+        <h3>Hospital Management System</h3>
+        <p class="ctx">Designed for private clinics and small-to-medium hospitals to digitize patient and administrative
+          workflows.</p>
+        <p class="did"><b>What I did:</b> Planned the system architecture and developed the Laravel-based backend and
+          admin workflow.</p>
+        <blockquote>"Clearer workflows give care teams more time for patients."</blockquote>
+        <div class="tags"><span>Laravel</span><span>HealthTech</span></div>
+      </div>
+      <div class="stat-box">
+        <div class="k mono">Headline stat</div>
+        <div class="v">8 core modules: patients, appointments, billing, pharmacy, laboratory, admissions, staff,
+          reporting</div>
+      </div>
+    </div>
+  </section>
+
+  <section id="services" class="wrap">
+    <div class="section-head">
+      <h2>Services</h2>
+    </div>
+    <div class="services">
+      <div class="svc flagship">
+        <span class="badge">FLAGSHIP</span>
+        <span class="tag mono">AI Consultancy &amp; Training</span>
+        <h3>Understand and adopt AI</h3>
+        <p>I help businesses and teams understand, adopt, and use AI effectively through practical training, workflow
+          improvement, and tailored AI solutions.</p>
+      </div>
+      <div class="svc">
+        <span class="tag mono">Software Development</span>
+        <h3>Custom Business Systems</h3>
+        <p>I design and build tailored web applications pharmacy, school, hospital, inventory, and other management
+          systems — using modern web technologies.</p>
+      </div>
+      <div class="svc">
+        <span class="tag mono">Web Design &amp; Development</span>
+        <h3>Business Websites</h3>
+        <p>I create responsive, professional websites that help businesses establish an online presence, showcase their
+          services, and generate leads.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="skills" class="wrap">
+    <div class="section-head">
+      <h2>Technologies &amp; skills</h2>
+    </div>
+
+    <div class="skills-grid">
+      <div class="skill-group">
+        <h3>Frontend</h3>
+        <ul class="skill-list">
+          <li>HTML</li>
+          <li>CSS</li>
+          <li>JavaScript</li>
+          <li>React</li>
+          <li>TypeScript</li>
+          <li>Responsive design</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Backend</h3>
+        <ul class="skill-list">
+          <li>PHP</li>
+          <li>Laravel</li>
+          <li>Python</li>
+          <li>REST APIs</li>
+          <li>MySQL</li>
+          <li>FilamentPHP</li>
+        </ul>
+      </div>
+      <div class="skill-group">
+        <h3>Tools &amp; practices</h3>
+        <ul class="skill-list">
+          <li>Git</li>
+          <li>Linux</li>
+          <li>API testing</li>
+          <li>Test cases</li>
+          <li>Technical support</li>
+          <li>AI workflows</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section id="resume" class="wrap">
+    <div class="section-head">
+      <h2>Resume</h2>
+    </div>
+    <div class="resume-box">
+      <p>Download my full CV for a detailed look at my education, experience, and technical skills.</p>
+      <a class="cv-btn" href="Ayango_Frances_CV.pdf" download="Ayango_Frances_CV.pdf">Download CV (PDF)</a>
+    </div>
+  </section>
+
+  <section id="about" class="wrap">
+    <div class="section-head">
+      <h2>About</h2>
+    </div>
+    <div class="about-grid">
+      <p>I graduated in Computer Science from Strathmore University in 2025 and build software for the local market
+        using a range of modern web technologies, mostly for real businesses: schools, a pharmacy, a hospital network,
+        and companies wanting to put AI to practical use. I like working step by step, understanding each layer of what
+        I build rather than shipping things I can't explain.</p>
+      <div>
+        <div class="fact">
+          <div class="k mono">Education</div>
+          <div class="v">BSc. of Informatics & Computer Science, Strathmore University 2025, Second Class Upper</div>
+        </div>
+        <div class="fact">
+          <div class="k mono">Core stack</div>
+          <div class="v">PHP / Laravel, React, Python, MySQL, Git, Linux</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="contact wrap" id="contact">
+    <h2>Building something for the local market? Let's talk.</h2>
+    <div class="contact-links mono">
+      <a href="mailto:frances.ayango2020@gmail.com">frances.ayango2020@gmail.com</a>
+      <a href="https://github.com/frances22-cloud" target="_blank" rel="noopener">GitHub — frances22-cloud</a>
+    </div>
+    <p class="fineprint">Ayango Frances — Software Developer</p>
+  </footer>
+
+</body>
+
+</html>
